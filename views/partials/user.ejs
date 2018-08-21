@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="/style/user.css">
+<script src="/socket.io/socket.io.js"></script>
+<div class="custom-container">
+  <div class="left">
+    <div class="user-info">
+      <div class="container">
+        <h5><%= user.name + " " + user.surename %></h5>
+        <h6>Username: <%= user.username %></h6>
+        <h6>Email: <%= user.email %></h6>
+        <a href="/changepassword"><h6>Change Password</h6></a>
+      </div>
+    </div>
+    <div class="partners-div">
+        <div class="container">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% partners.forEach((partner)=>{ %>
+                <tr>
+                  <th scope="row"><%= partner.username %></th>
+                  <td><%= partner.email %></td>
+                  <td><img id='img_<%= partner.username %>' class="ico-<%= partner.isOnline ? 'online' : 'offline' %>"></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="new-note">+ New Note</div>
+    <div class="notes-collection">
+      <% notes.reverse(); %>
+      <% notes.forEach((note)=>{ %>
+        <div class="note-div">
+          <p data-id="<%= note.id %>" contenteditable="true"><%= note.content %></p>
+          <div class="note-div-bot">
+            <img class="loading-img" src="/image/loading.gif">
+            <div>Saved</div>
+          </div>
+          <img class="delete-ico" src="/image/delete.png">
+        </div>
+      <% }); %>
+    </div>
+  </div>
+  <div class="container logout-container">
+    <button type="button" class="btn btn-danger">Log out</button>
+  </div>
+</div>
+<script src="/script/user.js"></script>
+<script src="/script/js_cookie.js"></script>
+<script src="/script/ws.js"></script>

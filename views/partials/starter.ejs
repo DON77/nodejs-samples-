@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="/style/starter.css">
+<div class="container-fluid">
+  <div class="row justify-content-around">
+    <div class="col-md-5 h-50">
+      <h2>Login</h2>
+      <form action="/login" method="get" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="loginInputUsername">Username</label>
+            <input type="input" class="form-control" id="loginUsername" name="username" value="<%= login.username %>" placeholder="Username" maxlength="30" required>
+            <div class="invalid-feedback">
+              Fill in the username.
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="loginInputPassword">Password</label>
+          <input type="password" class="form-control" id="loginInputPassword" name="password" placeholder="Password" maxlength="30" required>
+          <div class="invalid-feedback">
+            Fill in the password.
+          </div>
+        </div>
+        <div class="login-<%= login.attempt %>">
+          Username or password is wrong.
+        </div>
+        <a href="/forgotpassword"><h6 style="text-align: right;">Forgot password?</h6></a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col-md-5">
+      <h2>Register</h2>
+      <form action="/register" method="get" class="needs-validation" id="register_form" novalidate>
+        <div class="form-group">
+            <label for="riegisterInputUsername">Username</label>
+            <input type="input" class="form-control" id="riegisterUsername" name="username" aria-describedby="usernameHelp" value="<%= register.username %>" placeholder="Username" pattern="[a-zA-Z0-9]{5,30}" maxlength="30" required>
+            <div class="invalid-feedback">
+              Username must be from 5 to 30 characters and only contain alphabetical and numerical symbols.
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="riegisterInputEmail">Email</label>
+          <input type="email" class="form-control" id="riegisterInputEmail" name="email" value="<%= register.email %>" placeholder="Email" maxlength="100" required>
+          <div class="invalid-feedback">
+            Provide a valid email address.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="riegisterInputName">Name</label>
+          <input type="input" class="form-control" id="riegisterInputName" name="name" value="<%= register.name %>" placeholder="Name" maxlength="50" pattern="[\sa-zA-Z]{1,50}" required>
+          <div class="invalid-feedback">
+            Name must be at most 50 characters and only contain alphabetical symbols and spaces.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="riegisterInputSurename">Surename</label>
+          <input type="input" class="form-control" id="riegisterInputSurename" name="surename" value="<%= register.surename %>" placeholder="Surename" maxlength="50" pattern="[\sa-zA-Z]{1,50}" required>
+          <div class="invalid-feedback">
+            Surename must be at most 50 characters and only contain alphabetical symbols and spaces.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="riegisterInputPassword">Password</label>
+          <input type="password" class="form-control" id="riegisterInputPassword" name="password" placeholder="Password" maxlength="30" pattern="[a-zA-Z0-9]{5,30}" required>
+          <div class="invalid-feedback">
+            Password must be from 5 to 30 characters and only contain alphabetical symbols and numbers.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="riegisterInputRePassword">Confirm password</label>
+          <input type="password" class="form-control" id="riegisterInputRePassword" placeholder="Confirm password" maxlength="30">
+          <div class="invalid-feedback repassword-feedback">
+            Passwords don't match.
+          </div>
+        </div>
+        <div class="login-<%= register.attempt %>">
+          <%= register.msg %>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/script/validation.js"></script>
